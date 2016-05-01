@@ -6,5 +6,7 @@ You can access the application at simplewebchat.herokuapp.com. Please be aware i
 
 ### Credits ###
 Developer: Cait Powell
+
 Built For: Computer Networks (CS 231), Spring 2016, Mills College, Department of Mathematics and Computer Science
+
 Tutorials Used: TutorialZine, Java Beginners Tutorial
