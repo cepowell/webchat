@@ -17,8 +17,8 @@ app.set('view engine', 'html'); //the view engine is html
 app.engine('html', require('ejs').renderFile); // the templating engine is ejs
 app.set('views', __dirname + '/views'); // views are stored in the Views folder
 app.use(express.static(__dirname + '/public')); //static files (JS, CSS, images) are stored in the Public folder so they can be served by Express.js
-app.get('../js/moment.min.js', function(req, res){
-    res.sendFile(__dirname + '../js/moment.min.jss'); 
+app.get('../public/js/moment.min.js', function(req, res){
+    res.sendFile(__dirname + '../public/js/moment.min.jss'); 
 });
 
 require('./routes')(app, io);
