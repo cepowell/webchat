@@ -1,4 +1,4 @@
-// This file is executed in the browser, when people visit /chat/<random id>
+// This is the JS file that is executed when a user creates a new private chat room.
 
 $(function(){
 
@@ -25,7 +25,7 @@ $(function(){
 		noMessages = $(".nomessages"),
 		tooManyPeople = $(".toomanypeople");
 
-	// some more jquery objects
+	// some more jQuery objects
 	var chatNickname = $(".nickname-chat"),
 		leftNickname = $(".nickname-left"),
 		loginForm = $(".loginForm"),
@@ -44,7 +44,7 @@ $(function(){
 		noMessagesImage = $("#noMessagesImage");
 
 
-	// on connection to server get the id of person's room
+	// on connection to socket, get the id of person's room
 	socket.on('connect', function(){
 
 		socket.emit('load', id);
@@ -69,7 +69,7 @@ $(function(){
 				name = $.trim(yourName.val());
 				
 				if(name.length < 1){
-					alert("Please enter a nick name longer than 1 character!");
+					alert("Please enter a nickname longer than 1 character!");
 					return;
 				}
 
@@ -100,7 +100,7 @@ $(function(){
 				name = $.trim(hisName.val());
 
 				if(name.length < 1){
-					alert("Please enter a nick name longer than 1 character!");
+					alert("Please enter a nickname longer than 1 character!");
 					return;
 				}
 

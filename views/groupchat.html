@@ -3,33 +3,26 @@
 <html>
 <head>
 	<title>WebChat</title>
-
 	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css" />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 	<header class="banner">
-
 		<h1 class="bannertext">
 			<a href="/" style="text-decoration: none;
 			color: white">WebChat</a>
 		</h1>
-
 	</header>
-
 <ul class = "groupchat" id="messages" style="list-style: none;"></ul>
-    <span id="notifyUser"></span>
-
-
-<groupform>
+  <center>
     <form id="groupchatform" action="" onsubmit="return submitfunction();" >
-      <input type="hidden" id="user" value="" /><input id="m"
-    autocomplete="off" onkeyup="notifyTyping();" placeholder="Write
-    your message here." />
-<input type="submit" id="button" value="Send"/>
+      <input type="hidden" id="user" value="" />
+  <textarea id="m" onkeyup="notifyTyping();" placeholder="Write your message here." cols = "50" rows="6"></textarea>
+  <br/>
+<input type="submit" id="button" class="groupbutton" value="Send"/>
     </form>
-</groupform>
+  </center>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>

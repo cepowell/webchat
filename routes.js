@@ -1,4 +1,6 @@
-// req = request, res = response, req contains information about the HTTP request that triggered the event and res contains information about the HTTP response being send back
+// This file listens for events on the socket.
+
+// req = request, res = response. For each function, req contains information about the HTTP request that triggered the event and res contains information about the HTTP response being send back
 
 var gravatar = require('gravatar');
 
@@ -38,7 +40,7 @@ module.exports = function(app, io){
 	    io.emit('chatMessage', from, msg);
 	});
 
-	// When the client emits the 'load' event, reply with the number of people in this chat room
+	// When the socket is loaded, emit the number of people in the chat room
 	socket.on('load',function(data){
 
 	    var room = findClientsSocket(io,data);
@@ -58,21 +60,16 @@ module.exports = function(app, io){
 	    }
 	});
 
-	// When the client emits 'login', save his name and avatar, and add them to the room
+	// When a new user logs into the socket, save the user's information and log the user into the chat room
 	socket.on('login', function(data) {
 	    
 	    var room = findClientsSocket(io, data.id);
-	    // Only two people per room are allowed
 
 	    if (room.length < 2) {
 
-		// Use the socket object to store data. Each client gets their own unique socket object
+		// Use the socket object to store data. Each client gets their own unique socket object.
 		socket.username = data.user;
 		socket.room = data.id;
-		socket.avatar = gravatar.url(data.avatar, {s: '140', r: 'x', d: 'mm'});
-
-		// Tell the person what he should use for an avatar
-		socket.emit('img', socket.avatar);
 
 		// Add the client to the room
 		socket.join(data.id);
@@ -100,9 +97,8 @@ module.exports = function(app, io){
 	    }
 	});
 
-	// Somebody left the chat
+	// When a user disconnects from the socket, inform other chat room members and log the user out
 	socket.on('disconnect', function() {
-	    // Notify the other person in the chat room that his partner has left
 	    
 	    socket.broadcast.to(this.room).emit('leave', {
 		boolean: true,
@@ -111,14 +107,12 @@ module.exports = function(app, io){
 		avatar: this.avatar
 	    });
 	    
-	    // leave the room
 	    socket.leave(socket.room);
 	});
 
-	// Handle the sending of messages
+	// When a message comes through the socket, send the message to the other user in the chat room
 	socket.on('msg', function(data){
 	    
-	    // When the server receives a message, it sends it to the other person in the room.
 	    socket.broadcast.to(socket.room).emit('receive', {msg: data.msg, user: data.user, img: data.img});
 	});
     });

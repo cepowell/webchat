@@ -344,13 +344,15 @@ body {
 	text-align:center;
 	display: block;
 	margin:0px auto;
-	width: 750px;
+	width: 400px;
 	height: 300px;
 	background-color: #ffffff;
 	border-radius: 3px;
 	box-shadow:0px 3px 3px #e3e4e6;
 	color: #637277;
 	margin-bottom: 400px;
+	position: relative;
+	bottom: 80px;
 }
 .left h2 {
 	padding-top: 50px;
@@ -363,7 +365,6 @@ body {
 
 #leftImage {
 	float: left;
-	margin: 90px 0 0 140px;
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;
@@ -648,19 +649,19 @@ footer {
 	overflow:hidden;
 }
 
+/* ---------------------- GROUP CHAT ---------------------*/
+
 .groupchat{
     width: 100%;
-    bottom: 80px;
+    bottom: 180px;
     position: relative;  
     alignment: center;
-    bottom: 0;
     padding: 50px;
     font-family: 'Open Sans Condensed', serif;
 }
 
 .groupform{
-    	position:relative;
-	top: 130px;
+	float: bottom;
 	left:0;
 	width:100%;
 	padding-top: 30px;
@@ -708,4 +709,20 @@ footer {
 	font-size: 17px;
 	outline: none;
 	cursor:pointer;
+}
+
+.groupbutton {
+    height: 2em;
+    line-height: 2em;			
+    padding: 0 1em;
+    background-color: #70b1d1;
+    color: black;
+    font-size: inherit;
+    display: inline-block;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: uppercase;
 }
