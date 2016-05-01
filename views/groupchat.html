@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>WebChat</title>
+
+	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css" />
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<header class="banner">
+
+		<h1 class="bannertext">
+			<a href="/" style="text-decoration: none;
+			color: white">WebChat</a>
+		</h1>
+
+	</header>
+
+<ul class = "groupchat" id="messages" style="list-style: none;"></ul>
+    <span id="notifyUser"></span>
+
+
+<groupform>
+    <form id="groupchatform" action="" onsubmit="return submitfunction();" >
+      <input type="hidden" id="user" value="" /><input id="m"
+    autocomplete="off" onkeyup="notifyTyping();" placeholder="Write
+    your message here." />
+<input type="submit" id="button" value="Send"/>
+    </form>
+</groupform>
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../js/groupchat.js"></script>
+	<script src="../js/moment.min.js"></script>
+
+</body>
+</html>
